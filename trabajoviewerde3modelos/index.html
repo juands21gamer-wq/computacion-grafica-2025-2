@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modelos 3D con AR - Grajales & Solano</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Cargar el componente model-viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 85vh;
+        background-color: #000;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      button {
+        background-color: #2e8b57;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        background-color: #3cb371;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Modelo principal -->
+    <model-viewer
+      id="viewer"
+      src="Assets/Fruta.gltf"
+      alt="Modelo 3D interactivo"
+      ar
+      ar-modes="scene-viewer quick-look webxr"
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      exposure="1"
+      environment-image="neutral"
+      ar-scale="fixed"
+    >
+    </model-viewer>
+
+    <div class="controls">
+      <button id="btnpj">pj 😛</button>
+      <button id="btnesapada">espada</button>
+      <button id="btnpaisaje">paisaje</button>
+    </div>
+
+    <script>
+      const viewer = document.getElementById("viewer");
+
+      document.getElementById("btnpj").addEventListener("click", () => {
+        viewer.src = "assets/pj.gltf";
+      });
+
+      document.getElementById("btnesapada").addEventListener("click", () => {
+        viewer.src = "assets/espada.gltf";
+      });
+
+      document.getElementById("btnpaisaje").addEventListener("click", () => {
+        viewer.src = "assets/paisaje.gltf";
+      });
+    </script>
+  </body>
+</html>
