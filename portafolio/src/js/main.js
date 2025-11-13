@@ -5,6 +5,7 @@ import { initEntities, updateEntities } from './entities.js';
 import { initUI, updateUI } from './ui.js';
 import { unlockProject } from './ui.js';
 import { initPlanes, updatePlanes } from './planes.js';
+import { audioPlayer } from './audio.js';
 
 // Hacer las variables globales para que menu.js pueda acceder
 let scene, camera, renderer, clock;
@@ -41,6 +42,8 @@ function init() {
     initEntities(scene);
     initUI();
     initPlanes(scene);
+  
+
 
     window.addEventListener('resize', onWindowResize);
     animate();
