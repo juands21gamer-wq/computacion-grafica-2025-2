@@ -7,6 +7,10 @@ let renderer = null;
 // Hacer gameStarted global para que ui.js pueda acceder
 window.gameStarted = gameStarted;
 
+// === NUEVO: Audio global ===
+let backgroundMusic = null;
+let isMusicPlaying = false;
+
 // Elementos del DOM
 const menuScreen = document.getElementById('MenuScreen');
 const gameScreen = document.getElementById('gameScreen');
@@ -18,6 +22,33 @@ const resumeButton = document.getElementById('resumeButton');
 const menuButton = document.getElementById('menuButton');
 const hud = document.getElementById('hud');
 const crosshair = document.getElementById('crosshair');
+
+// === NUEVO: Funciones de audio simples ===
+function initAudio() {
+    backgroundMusic = new Audio('./src/audio/music.mp3');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.3;
+    console.log("✅ Audio inicializado");
+}
+
+function playMusic() {
+    if (backgroundMusic && !isMusicPlaying) {
+        backgroundMusic.play().then(() => {
+            isMusicPlaying = true;
+            console.log("🎵 Música iniciada");
+        }).catch(error => {
+            console.log("Click para iniciar música:", error);
+        });
+    }
+}
+
+function pauseMusic() {
+    if (backgroundMusic && isMusicPlaying) {
+        backgroundMusic.pause();
+        isMusicPlaying = false;
+        console.log("⏸️ Música pausada");
+    }
+}
 
 // Funciones para controlar el mouse
 window.lockMouse = function() {
@@ -65,6 +96,9 @@ function startGame() {
     gameStarted = true;
     window.gameStarted = true;
     
+    // === NUEVO: Reproducir música al empezar juego ===
+    playMusic();
+    
     // Bloquear mouse al iniciar juego
     window.lockMouse();
     
@@ -102,11 +136,15 @@ function togglePause() {
         gameStarted = false;
         window.gameStarted = false;
         window.unlockMouse(); // Desbloquear mouse en pausa
+        // === NUEVO: Pausar música en pausa ===
+        pauseMusic();
     } else {
         pauseScreen.style.display = 'none';
         gameStarted = true;
         window.gameStarted = true;
         window.lockMouse(); // Bloquear mouse al reanudar
+        // === NUEVO: Reanudar música al quitar pausa ===
+        playMusic();
     }
 }
 
@@ -127,6 +165,8 @@ function returnToMenu() {
     gameStarted = false;
     window.gameStarted = false;
     window.unlockMouse(); // Desbloquear mouse en menú
+    // === NUEVO: Pausar música al volver al menú ===
+    pauseMusic();
 }
 
 // Event listeners
@@ -160,4 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Crear el unlockPopup y overlay desde el inicio
     window.ensureUnlockPopup();
+    
+    // === NUEVO: Inicializar audio cuando carga la página ===
+    initAudio();
 });

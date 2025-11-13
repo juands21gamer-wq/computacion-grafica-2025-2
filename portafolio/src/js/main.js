@@ -7,6 +7,12 @@ import { unlockProject } from './ui.js';
 import { initPlanes, updatePlanes } from './planes.js';
 import { audioPlayer } from './audio.js';
 
+
+audioPlayer.init();
+
+
+audioPlayer.play();
+
 // Hacer las variables globales para que menu.js pueda acceder
 let scene, camera, renderer, clock;
 
