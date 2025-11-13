@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio 3D</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./src/css/menustyle.css">
+</head>
+<body>
+    <!-- Pantalla de Menú -->
+    <div id="MenuScreen">
+        <h1 class="game-title jittery">SHOOTERFOLIO</h1>
+        <h2 class="subtitle">JUAN DAVID SOLANO MARTINEZ</h2>
+        
+        <div class="container">
+            <div class="game-buttons">
+                <button id="playButton">Jugar</button>
+                <button id="instructionsButton">Instrucciones</button>
+                <button id="creditsButton">Créditos</button>
+            </div>
+            
+            <div class="game-info">
+                <p>Explora mi portafolio interactivo en 3D</p>
+                <p>Desplázate con WASD y descubre mis proyectos</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="gameScreen">
+        <!-- El canvas de Three.js se insertará aquí -->
+        <div id="hud">
+            
+        </div>
+        <div id="crosshair">
+            <div class="line vertical"></div>
+            <div class="line horizontal"></div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Pausa -->
+    <div id="PauseScreen">
+        <h2>JUEGO EN PAUSA</h2>
+        <button id="resumeButton">Continuar</button>
+        <button id="menuButton">Volver al Menú</button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./src/js/menu.js"></script>
+
+    <script>
+// Guardar posición al recargar/cerrar
+window.addEventListener('beforeunload', function() {
+    if (window.savePlayerPosition) {
+        window.savePlayerPosition();
+    }
+});
+
+console.log('✅ Sistema de guardado seguro activado');
+</script>
+</body>
+</html>

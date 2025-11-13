@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.gameScreen {
+    width: 200px;
+}
+
+body {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1em;
+    text-align: center;
+}
+
+#MenuScreen {
+    background: #06c5f0 repeating-linear-gradient(135deg, transparent, transparent 1em, rgba(255, 255, 255, 0.1) 1em, rgba(255, 255, 255, 0.1) 2em) !important;
+    color: #f7f6f3;
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+
+#WinnerScreen {
+    background: #059d68 repeating-linear-gradient(135deg, transparent, transparent 1em, rgba(255, 255, 255, 0.1) 1em, rgba(255, 255, 255, 0.1) 2em) !important;
+    color: #f7f6f3;
+    height: 100vh;
+    padding-top: 10%;
+}
+
+#LoserScreen {
+    color: #f7f6f3;
+    height: 100vh;
+    padding-top: 10%;
+    z-index: 1 !important;
+}
+
+span {
+    font: 600 200px/1em "Amatic SC", sans-serif;
+    font-style: normal;
+    padding-top: 140px;
+}
+
+.jittery span {
+    animation: jitter 200ms linear infinite;
+    color: #ffffff;
+    display: inline-block;
+}
+
+
+@keyframes jitter {
+    50% {
+        transform: skewY(0.7deg) skewX(-0.7deg) scale(1.006);
+    }
+}
+
+button {
+    background: #e8875e;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 9px #925237;
+    color: #f7f6f3;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amatic SC", sans-serif;
+    font-size: 2em;
+    margin: 0 auto 0.5em;
+    outline: none;
+    padding: 0.5em;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.2s;
+    width: 8em;
+}
+
+button:disabled {
+    background: #915338 repeating-linear-gradient(45deg, transparent, transparent 1em, rgba(255, 255, 255, 0.1) 1em, rgba(255, 255, 255, 0.1) 2em);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+button:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.game span {
+    position: relative;
+    right: 0;
+}
+
+.box {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2em auto;
+    padding: 1em 2em;
+    width: 15em;
+}
+
+.lives-box {
+    padding: 0;
+}
+
+.lives {
+    font-size: 3em;
+}
+
+.stats {
+    background: #eccaaf;
+    border: 0.3em #a33d62 solid;
+    color: #a33d62;
+    line-height: 1.8;
+    margin: 2em;
+    padding: 1em;
+}
+
+h3 {
+    padding: 0.5em;
+    text-decoration: underline;
+}
+
+.box .counter {
+    text-align: left;
+}
+
+.container {
+    align-items: center;
+    margin-top: 4%;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* min-height: 100vh; */
+    text-align: center;
+}
+
+.game {
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.counter {
+    position: absolute;
+    right: 0;
+}
+
+.points-box {
+    background: #f45689;
+}
+
+.score-box {
+    background: #f4a262;
+}
+
+.player-box {
+    background: #9f81c1;
+}
+
+.lives-box {
+    background: #ff7575;
+}
+
+#PauseScreen {
+    position: absolute;
+    margin-left: 23%;
+    margin-top: 20%;
+}
